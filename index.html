@@ -19,17 +19,16 @@
         /* ------------------------------------- */
         /* ការរៀបចំទម្រង់ទូទៅ (Reset & Base) */
         /* ------------------------------------- */
-        body {
+    body {
             margin: 0;
             padding: 0;
-            background-color: var(--bg-dark);
-            background-image: radial-gradient(circle at center, var(--bg-light) 0%, var(--bg-dark) 100%);
-            background-attachment: fixed; /* ឲ្យផ្ទៃ Background ឈរស្ងៀមមិនរត់តាមការអូស */
+            background-color: #2b1b0d; /* ពណ៌ត្នោតចាស់ស្អាតសម្រាប់កណ្ដាល */
+            background-image: radial-gradient(circle at center, #3d2613 0%, #1a0f0a 100%);
+            background-attachment: fixed;
             font-family: 'Battambang', sans-serif;
             color: var(--gold-text);
-            overflow-x: hidden; 
+            overflow-x: hidden;
         }
-
         /* ------------------------------------- */
         /* ក្បាច់សងខាង (Fixed Kbach) - លោតចេញតែ ១ ជាប់អេក្រង់ជានិច្ច */
         /* ------------------------------------- */
@@ -53,7 +52,25 @@
             background-position: right center;
             transform: scaleX(-1); /* បង្វិលបែរមុខចូលគ្នា */
         }
-
+.kbach-left, .kbach-right {
+            position: fixed;
+            top: 0;
+            bottom: 0;
+            width: 40px;
+            z-index: 10;
+            pointer-events: none;
+            background-image: url('kbach-border.png');
+            background-size: auto 100%;
+            background-repeat: repeat-y;
+        }
+        .kbach-left { 
+            left: 0; 
+            background-position: left; /* ទាញយកក្បាច់គែមឆ្វេងមកបង្ហាញ */
+        }
+        .kbach-right { 
+            right: 0; 
+            background-position: right; /* ទាញយកក្បាច់គែមស្តាំមកបង្ហាញ */
+        }
         /* ------------------------------------- */
         /* តួវេបសាយកណ្តាល (Main Content) */
         /* ------------------------------------- */
@@ -627,15 +644,151 @@
             line-height: 1.2;
         }
         
-        .eng-couple-names {
+      .eng-couple-names {
             font-family: 'Battambang', sans-serif;
-            font-size: 1rem;
+            font-size: 0.85rem; /* បន្ថយទំហំអក្សរបន្តិចសម្រាប់ទូរស័ព្ទ */
             color: var(--gold-text);
             margin: 0;
-            letter-spacing: 2px; /* ពង្រីកចន្លោះអក្សរឲ្យមើលទៅប្រណីត */
+            letter-spacing: 1px; 
             font-weight: bold;
+            white-space: nowrap; /* ទប់កុំឱ្យអក្សរធ្លាក់ចុះបន្ទាត់ខុសរាង */
         }
 
+        /* ------------------------------------- */
+        /* កែតម្រូវទំហំ Countdown ឱ្យតូចល្មមស្អាត */
+        /* ------------------------------------- */
+        .countdown-section {
+            margin-top: 15px;
+            padding: 12px;
+            background: rgba(43, 27, 13, 0.7);
+            border: 1px solid #b88a44;
+            border-radius: 12px;
+            text-align: center;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.5);
+            max-width: 90%;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .countdown-title {
+            font-family: 'Dancing Script', cursive;
+            font-size: 1.3rem; /* បង្រួមចំណងជើងឱ្យតូចល្មម */
+            color: var(--gold-accent);
+            margin-bottom: 8px;
+        }
+
+        .countdown-grid {
+            display: flex;
+            justify-content: center;
+            gap: 8px; /* បង្រួមគម្លាតប្រអប់នីមួយៗ */
+        }
+
+        .countdown-box {
+            background: rgba(0, 0, 0, 0.4);
+            border: 1px solid #b88a44;
+            border-radius: 8px;
+            padding: 6px 8px;
+            min-width: 45px; /* បង្រួមទទឹងប្រអប់លេខ */
+        }
+
+        .countdown-number {
+            font-family: 'Battambang', sans-serif;
+            font-size: 1.1rem; /* បង្រួមទំហំលេខ */
+            font-weight: bold;
+            color: #fff;
+            display: block;
+        }
+
+        .countdown-label {
+            font-family: 'Battambang', sans-serif;
+            font-size: 0.65rem; /* បង្រួមអក្សរ ថ្ងៃ ម៉ោង នាទី */
+            color: var(--gold-text);
+            text-transform: uppercase;
+        }
+        /* ------------------------------------- */
+        /* ប៊ូតុង Add to Calendar */
+        /* ------------------------------------- */
+        .cal-btn-container {
+            margin-top: 15px;
+            text-align: center;
+        }
+
+        .add-to-cal-btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            background: linear-gradient(135deg, #d4af37, #aa7c11);
+            color: #1a0f0a;
+            font-family: 'Battambang', sans-serif;
+            font-size: 0.9rem;
+            font-weight: bold;
+            padding: 10px 20px;
+            border-radius: 25px;
+            text-decoration: none;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.4);
+            transition: all 0.3s ease;
+            border: 1px solid #ffe875;
+        }
+
+        .add-to-cal-btn:hover {
+            background: linear-gradient(135deg, #ffe875, #d4af37);
+            transform: translateY(-2px);
+            box-shadow: 0 6px 15px rgba(212,175,55,0.4);
+        }
+
+        h4, .event-title {
+            font-size: 1.0rem; /* បន្ថយទំហំឱ្យតូចជាងមុនប្រហែល ២ លេខ ស្រួលមើល និងមិនធំពេក */
+            color: var(--gold-accent);
+            font-weight: bold;
+            margin-bottom: 5px;
+        }
+        /* ------------------------------------- */
+        /* Animation សម្រាប់អក្សរឱ្យផុសចេញមកស្អាត */
+        /* ------------------------------------- */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .animate-text {
+            animation: fadeInUp 1.5s ease-out forwards;
+        }
+
+        /* ------------------------------------- */
+        /* Scroll Animation Styles */
+        /* ------------------------------------- */
+      .reveal-on-scroll {
+            opacity: 0;
+            transform: translateY(40px);
+            transition: opacity 1s ease-out, transform 1s ease-out;
+            will-change: opacity, transform;
+        }
+
+        .reveal-on-scroll.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+@keyframes fadeInGallery {
+            from {
+                opacity: 0;
+                transform: translateY(40px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .gallery-custom {
+            animation: fadeInGallery 1.2s ease-out forwards;
+        }
     </style>
 </head>
 <body>
@@ -661,7 +814,7 @@
     <div class="main-content">
         
         <!-- ផ្នែកទី១៖ លិខិតអញ្ជើញ -->
-        <h2 class="main-title">ពិធីសិរីមង្គលអាពាហ៍ពិពាហ៍</h2>
+        <h2 class="animate-text">ពិធីសិរីមង្គលអាពាហ៍ពិពាហ៍</h2>
 
         <!-- ឡូហ្គោ "វម"
         <div class="khmer-logo">វម</div> -->
@@ -670,11 +823,11 @@
         <div class="couple-container">
             <div style="text-align: center;">
                 <p>កូនប្រុសនាម</p>
-                <h2>វ៉ាន ច័ន្ទគ្រឹស្នា</h2>
+                <h2 class="animate-text">វ៉ាន ច័ន្ទគ្រឹស្នា</h2>
             </div>
             <div style="text-align: center;">
                 <p>កូនស្រីនាម</p>
-                <h2>មិន ស្រីលក្ខ</h2>
+                <h2 class="animate-text">មិន ស្រីលក្ខ</h2>
             </div>
         </div>
          <!-- ប៊ូតុងដាក់រូប (អាចប្តូរដាក់ <img> វិញបើចង់បានរូបថត) -->
@@ -682,14 +835,14 @@
 
         <!-- អក្សរអង់គ្លេសខាងក្រោមរូបថតកណ្តាល -->
         <div class="eng-names-wrapper">
-            <h3 class="eng-wedding-title">Wedding Ceremony</h3>
-            <p class="eng-couple-names">VAN CHANKRISNA 💛 MIN SREYLAK</p>
+            <h3 class="animate-text">Wedding Ceremony</h3>
+            <p class="animate-text">VAN CHANKRISNA 💛 MIN SREYLAK</p>
         </div>
 
         <hr class="divider">
       
         <!-- ផ្នែកទី២៖ -->
-           <h2 class="main-title">ពិធីសិរីមង្គលអាពាហ៍ពិពាហ៍</h2>
+           <h2 class="main-title">ឪពុកម្តាយទាំងសងខាង <br> Parents on both</h2>
            
         <div class="parents-container">
             <div style="text-align: right; padding-right: 15px;">
@@ -714,17 +867,19 @@
 
 
         <hr class="divider">
-        <h2 id="schedule" class="main-title" style="margin-top: 30px;">របៀបវារៈកម្មវិធី</h2>
-        <p style="font-size: 0.95rem;">ថ្ងៃសៅរ៍ ទី២១ ខែវិច្ចការ ឆ្នាំ២០២៦</p>
-        
+        <h2 id="schedule" class="main-title" style="margin-top: 30px;">របៀបវារៈកម្មវិធី <br> Program Agenda</h2>
+        <p style="font-size: 0.95rem;">ថ្ងៃសៅរ៍ ទី២១ ខែវិច្ឆិការ ឆ្នាំ២០២៦ <br> Sunday, November 21, 2026</p>
+        <!-- ប៊ូតុង Add to Calendar -->
+        <div class="cal-btn-container">
+        </div>
         <!-- ប្រអប់កម្មវិធីទី១ -->
         <div style="background: rgba(0,0,0,0.3); border: 1px solid rgba(235, 211, 155, 0.2); border-radius: 15px; padding: 20px; margin-top: 20px; text-align: left; display: flex; align-items: center;">
             <div style="width: 50px; height: 50px; background: rgba(235, 211, 155, 0.15); border-radius: 12px; display: flex; justify-content: center; align-items: center; font-size: 1.5rem; border: 1px solid var(--gold-accent); margin-right: 20px;">
                 🎪
             </div>
             <div>
-                <h3 style="margin: 0 0 5px 0; font-size: 1.1rem;">១៣:៣០ រសៀល</h3>
-                <p style="margin: 0; font-size: 0.9rem; color: #d1b88a;">ជួបជុំបងប្អូន និងប្រារព្ធពិធីកាត់សក់</p>
+                <h4 style="margin: 0 0 5px 0; font-size: 1.1rem;">១៣:០០ រសៀល​ / At 1:00 PM</h4>
+                <p style="margin: 0; font-size: 0.9rem; color: #d1b88a;">ពិធីសែនក្រុងពាលី និងប្រារព្ធពិធីកាត់សក់ / Ceremony to Offer Sacrifices to the Guardian Spirits of the Land and Hair-Cutting Ceremony.</p>
             </div>
         </div>
          <!-- ប្រអប់កម្មវិធីទី១ -->
@@ -733,8 +888,8 @@
                 🎪
             </div>
             <div>
-                <h3 style="margin: 0 0 5px 0; font-size: 1.1rem;">០៧:៣០ នាទីព្រឹក</h3>
-                <p style="margin: 0; font-size: 0.9rem; color: #d1b88a;">ជួបជុំបងប្អូន និងភ្ញៀវកិត្តិយស</p>
+                <h4 style="margin: 0 0 5px 0; font-size: 1.1rem;">១៥:០០ ល្ងាច / At 3:oo PM</h4>
+                <p style="margin: 0; font-size: 0.9rem; color: #d1b88a;">ពិធីសែនដូនតា / Ancestor Worship Ceremony </p>
             </div>
         </div>
          <!-- ប្រអប់កម្មវិធីទី២ -->
@@ -743,8 +898,8 @@
                 🎪
             </div>
             <div>
-                <h3 style="margin: 0 0 5px 0; font-size: 1.1rem;">០៧:៣០ នាទីព្រឹក</h3>
-                <p style="margin: 0; font-size: 0.9rem; color: #d1b88a;">ជួបជុំបងប្អូន និងភ្ញៀវកិត្តិយស</p>
+                <h4 style="margin: 0 0 5px 0; font-size: 1.1rem;">១៦:០០ ល្ងាច / At 4:00 PM</h4>
+                <p style="margin: 0; font-size: 0.9rem; color: #d1b88a;">ពិធីសូត្រមន្តចម្រើនព្រះបរិត្ត / Chanting Ceremony for the Recitation of Paritta (Protective Verses)</p>
             </div>
         </div>
          <!-- ប្រអប់កម្មវិធីទី៣ -->
@@ -753,13 +908,13 @@
                 🎪
             </div>
             <div>
-                <h3 style="margin: 0 0 5px 0; font-size: 1.1rem;">០៧:៣០ នាទីព្រឹក</h3>
-                <p style="margin: 0; font-size: 0.9rem; color: #d1b88a;">ជួបជុំបងប្អូន និងភ្ញៀវកិត្តិយស</p>
+                <h4 style="margin: 0 0 5px 0; font-size: 1.1rem;">១៧:៣០ ល្ងាច / At 5:00</h4>
+                <p style="margin: 0; font-size: 0.9rem; color: #d1b88a;">ពិធីជាវខាន់ស្លា និងពិសាអាហារ / Betrothal Ceremony and Meal</p>
             </div>
         </div>
          <hr class="divider">
-        <p style="font-size: 0.95rem;">ថ្ងៃអាទិត្យ ទី២២ ខែវិច្ចការ ឆ្នាំ២០២៦</p>
-        
+        <p style="font-size: 0.95rem;">ថ្ងៃអាទិត្យ ទី២២ ខែវិច្ឆិការ ឆ្នាំ២០២៦​ <br> Sunday, November 22, 2026</p>
+
         <!-- <div style="height: 500px;"></div> -->
         
         <!-- ប្រអប់កម្មវិធីទី២ -->
@@ -768,8 +923,8 @@
                 🎪
             </div>
             <div>
-                <h3 style="margin: 0 0 5px 0; font-size: 1.1rem;">០៩:០០ ពេលព្រឹក</h3>
-                <p style="margin: 0; font-size: 0.9rem; color: #d1b88a;">ជួបជុំបងប្អូន និងប្រារព្ធពិធីហែរជំនូន</p>
+                <h4 style="margin: 0 0 5px 0; font-size: 1.1rem;">០៨:០០ ពេលព្រឹក / At 8:00 AM</h4>
+                <p style="margin: 0; font-size: 0.9rem; color: #d1b88a;">ពិធីហែជំនូន / Wedding Procession (Presentation of Betrothal Gifts)</p>
             </div>
         </div>
          <!-- ប្រអប់កម្មវិធីទី១ -->
@@ -778,8 +933,8 @@
                 🎪
             </div>
             <div>
-                <h3 style="margin: 0 0 5px 0; font-size: 1.1rem;">០៧:៣០ នាទីព្រឹក</h3>
-                <p style="margin: 0; font-size: 0.9rem; color: #d1b88a;">ជួបជុំបងប្អូន និងភ្ញៀវកិត្តិយស</p>
+                <h4 style="margin: 0 0 5px 0; font-size: 1.1rem;">១០:៣០ នាទីព្រឹក / At 10:00 AM</h4>
+                <p style="margin: 0; font-size: 0.9rem; color: #d1b88a;">ពិធីសំពះផ្ទឹម និងពិសាអាហារ/ Sampeah Pteum Ceremony and Meal</p>
             </div>
         </div>
          <!-- ប្រអប់កម្មវិធីទី២ -->
@@ -788,8 +943,8 @@
                 🎪
             </div>
             <div>
-                <h3 style="margin: 0 0 5px 0; font-size: 1.1rem;">០៧:៣០ នាទីព្រឹក</h3>
-                <p style="margin: 0; font-size: 0.9rem; color: #d1b88a;">ជួបជុំបងប្អូន និងភ្ញៀវកិត្តិយស</p>
+                <h4 style="margin: 0 0 5px 0; font-size: 1.1rem;">១៣:០០ រសៀល</h4>
+                <p style="margin: 0; font-size: 0.9rem; color: #d1b88a;">ពិធីចងដៃ និងពិធីព្រះថោងតោងស្បៃនាងនាគ/ Wrist-tying ceremony and the Preah Thong-Neang Neak ceremony (holding the scarf).</p>
             </div>
         </div>
          <!-- ប្រអប់កម្មវិធីទី៣ -->
@@ -798,10 +953,14 @@
                 🎪
             </div>
             <div>
-                <h3 style="margin: 0 0 5px 0; font-size: 1.1rem;">០៧:៣០ នាទីព្រឹក</h3>
-                <p style="margin: 0; font-size: 0.9rem; color: #d1b88a;">ជួបជុំបងប្អូន និងភ្ញៀវកិត្តិយស</p>
+                <h3 style="margin: 0 0 5px 0; font-size: 1.1rem;">១៥:០០ ល្ងាច</h3>
+                <p style="margin: 0; font-size: 0.9rem; color: #d1b88a;">ពិធីទទួលភ្ញៀវ (ពិធីជប់លៀង) / Reception (Banquet)</p>
             </div>
         </div>
+         <p style="font-size: 0.9rem; margin-bottom: 10px;">ពិធីជប់លៀងមង្គលការ (ម៉ោង ០៥:០០ ល្ងាច)<br> Wedding party at 5:00 PM</p>
+                <a href="https://calendar.google.com/calendar/render?action=TEMPLATE&text=Wedding+Reception+-+Van+Chankrisna+%26+Min+Sreylak&dates=20261122T170000Z/20261122T220000Z&details=ពិធីជប់លៀងភោជនាហារពេលល្ងាច&location=Phnom+Penh" target="_blank" class="add-to-cal-btn" style="font-size: 0.8rem; padding: 6px 15px;">
+                    📅 Save ថ្ងៃទី២២ (ពេលល្ងាច)
+                </a>
      <hr class="divider">
             <!-- ផ្នែកទី៣៖ ទីតាំងកម្មវិធី (Map Section) -->
         <div id="map" style="margin-top: 40px; margin-bottom: 40px;">
@@ -828,29 +987,26 @@
             
            <!-- ផ្នែកទី៤៖ វិចិត្រសាលរូបភាព (Gallery Section) -->
         <div id="gallery" style="margin-top: 40px; margin-bottom: 40px;">
-            <h2 class="main-title">អនុស្សាវរីយ៍របស់យើង / Our Memories</h2>
-            
+          
             <div class="gallery-custom">
-                
-                <!-- ជួរទី ១៖ ដាក់រូប ២ សន្លឹក -->
-                <div class="gallery-row gallery-2-cols">
-                    <img src="photo1.jpg" alt="Memory 1" onclick="openModal(this.src)">
-                    <img src="photo2.jpg" alt="Memory 2" onclick="openModal(this.src)">
-                </div>
-                
-                <!-- ជួរទី ២៖ ដាក់រូប ៣ សន្លឹក -->
-                <div class="gallery-row gallery-3-cols">
-                    <img src="photo3.jpg" alt="Memory 3" onclick="openModal(this.src)">
-                    <img src="photo4.jpg" alt="Memory 4" onclick="openModal(this.src)">
-                    <img src="photo5.jpg" alt="Memory 5" onclick="openModal(this.src)">
-                </div>
-                
-                <!-- ជួរទី ៣៖ ដាក់រូប ១ សន្លឹក ធំផ្តេក -->
-                <div class="gallery-row gallery-1-col">
-                    <img src="photo6.jpg" alt="Memory 6" onclick="openModal(this.src)">
-                </div>
-                
-            </div>
+    <!-- ជួរទី ១ -->
+    <div class="gallery-row gallery-2-cols">
+        <img src="photo1.jpg" alt="Memory 1" onclick="openModal(this.src)">
+        <img src="photo2.jpg" alt="Memory 2" onclick="openModal(this.src)">
+    </div>
+
+    <!-- ជួរទី ២ -->
+    <div class="gallery-row gallery-3-cols">
+        <img src="photo3.jpg" alt="Memory 3" onclick="openModal(this.src)">
+        <img src="photo4.jpg" alt="Memory 4" onclick="openModal(this.src)">
+        <img src="photo5.jpg" alt="Memory 5" onclick="openModal(this.src)">
+     </div>
+
+     <!-- ជួរទី ៣ -->
+        <div class="gallery-row gallery-1-col">
+        <img src="photo6.jpg" alt="Memory 6" onclick="openModal(this.src)">
+        </div>
+        </div>
         </div>
          <hr class="divider">
         <!-- ផ្នែកទី៥៖ បញ្ជាក់ការចូលរួម (RSVP Section) -->
@@ -944,7 +1100,36 @@
             
             <div style="font-size: 1.5rem; margin-top: 15px;">❤️❤️❤️</div>
         </div>
-
+        <hr class="divider">
+          <!-- ប៊ូតុង Add to Calendar -->
+        <div class="cal-btn-container">
+          <p style="font-size: 0.9rem; margin-bottom: 10px;">ពិធីជប់លៀងមង្គលការ (ម៉ោង ០៥:០០ ល្ងាច)​ <br> Wedding party at 5:00 PM</p>
+                <a href="https://calendar.google.com/calendar/render?action=TEMPLATE&text=Wedding+Reception+-+Van+Chankrisna+%26+Min+Sreylak&dates=20261122T170000Z/20261122T220000Z&details=ពិធីជប់លៀងភោជនាហារពេលល្ងាច&location=Phnom+Penh" target="_blank" class="add-to-cal-btn" style="font-size: 0.8rem; padding: 6px 15px;">
+                    📅 Save ថ្ងៃទី២២ (ពេលល្ងាច)
+                </a>
+        </div>
+        <!-- ប្រអប់ Countdown ថ្ងៃមង្គលការ -->
+        <div class="countdown-section reveal-on-scroll">
+            <h3 class="countdown-title">Counting Down To Our Big Day</h3>
+            <div class="countdown-grid">
+                <div class="countdown-box">
+                    <span id="days" class="countdown-number">00</span>
+                    <span class="countdown-label">ថ្ងៃ</span>
+                </div>
+                <div class="countdown-box">
+                    <span id="hours" class="countdown-number">00</span>
+                    <span class="countdown-label">ម៉ោង</span>
+                </div>
+                <div class="countdown-box">
+                    <span id="minutes" class="countdown-number">00</span>
+                    <span class="countdown-label">នាទី</span>
+                </div>
+                <div class="countdown-box">
+                    <span id="seconds" class="countdown-number">00</span>
+                    <span class="countdown-label">វិនាទី</span>
+                </div>
+            </div>
+        </div>
 
     </div> <!-- បិទ Main Content -->
  
@@ -1063,6 +1248,32 @@
                 });
             }
         }, { once: true });
+        // កំណត់កាលបរិច្ឆេទថ្ងៃមង្គលការរបស់បង (ឆ្នាំ-ខែ-ថ្ងៃ ម៉ោង) ឧទាហរណ៍៖ 2026-12-31T08:00:00
+        const weddingDate = new Date("2026-11-21T08:00:00").getTime();
+
+        function updateCountdown() {
+            const now = new Date().getTime();
+            const distance = weddingDate - now;
+
+            if (distance < 0) {
+                document.querySelector(".countdown-section").innerHTML = "<h3 class='countdown-title'>Happy Wedding Day! 🎉</h3>";
+                return;
+            }
+
+            const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+            const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+            const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+            document.getElementById("days").innerText = String(days).padStart(2, '0');
+            document.getElementById("hours").innerText = String(hours).padStart(2, '0');
+            document.getElementById("minutes").innerText = String(minutes).padStart(2, '0');
+            document.getElementById("seconds").innerText = String(seconds).padStart(2, '0');
+        }
+
+        setInterval(updateCountdown, 1000);
+        updateCountdown();
     </script>
+    
 </body>
 </html>
