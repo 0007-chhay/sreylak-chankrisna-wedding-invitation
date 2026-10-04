@@ -1060,32 +1060,45 @@
         </div>
 
         <!-- Script សម្រាប់បញ្ជូនទិន្នន័យ (ដូចកូដចាស់របស់បង) -->
-        <script>
-            document.getElementById("rsvpForm").addEventListener("submit", function(e) {
-                e.preventDefault(); 
-                
-                var form = e.target;
-                var data = new FormData(form);
-                var btn = document.getElementById("submitBtn");
-                
-                btn.innerText = "កំពុងបញ្ជូន... / Sending..."; 
-                
-                // សូមយក Link Google Apps Script របស់បង មក Paste ត្រង់នេះ
-                fetch("https://script.google.com/macros/s/AKfycbyzQ3LZjmLF3qWKqWzGrPV8sn9auPCq3BknVAesD-E21kSVpHTaSwHCOoOVfdAZTsaH/exec", {
-                    method: "POST",
-                    body: data
-                })
-                .then(response => {
-                    alert("អរគុណសម្រាប់ការបញ្ជាក់ការចូលរួម! យើងខ្ញុំរង់ចាំស្វាគមន៍ដោយក្តីរីករាយ។");
-                    form.reset(); 
-                    btn.innerText = "បញ្ជូនការបញ្ជាក់ / confirmation";
-                })
-                .catch(error => {
-                    alert("សុំទោស មានបញ្ហាបន្តិចបន្តួច សូមសាកល្បងម្ដងទៀត។");
-                    btn.innerText = "បញ្ជូនការបញ្ជាក់ / confirmation";
-                });
+       <script>
+        let lastSubmitTime = 0; // កត់ត្រាពេលវេលាចុចចុងក្រោយ
+
+        document.getElementById("rsvpForm").addEventListener("submit", function(e) {
+            e.preventDefault(); 
+            
+            var currentTime = new Date().getTime();
+            // ការពារ៖ បើចុចញាប់ពេក ក្នុងរយៈពេល ១៥ នាទី (900,000 ms) ហាមផ្ញើ
+            if (currentTime - lastSubmitTime < 86400000) {
+                alert("សូមមេត្តារង់ចាំ មុនពេលបញ្ជាក់ការចូលរួមម្ដងទៀត។");
+                return;
+            }
+            
+            var form = e.target;
+            var data = new FormData(form);
+            var btn = document.getElementById("submitBtn");
+            
+            // ការពារកុំឱ្យចុចប៊ូតុងซ้ำច្រើនដងពេលកំពុងដំណើរការ
+            btn.disabled = true;
+            btn.innerText = "កំពុងបញ្ជូន... / Sending..."; 
+            
+            fetch("https://script.google.com/macros/s/AKfycbyzQ3LZjmLF3qWKqWzGrPV8sn9auPCq3BknVAesD-E21kSVpHTaSwHCOoOVfdAZTsaH/exec", {
+                method: "POST",
+                body: data
+            })
+            .then(response => {
+                lastSubmitTime = new Date().getTime(); // កត់ត្រាពេលផ្ញើបានជោគជ័យ
+                alert("អរគុណសម្រាប់ការបញ្ជាក់ការចូលរួម! Thank you for confirming your participation!");
+                form.reset(); 
+                btn.disabled = false;
+                btn.innerText = "បញ្ជូនការបញ្ជាក់ / confirmation";
+            })
+            .catch(error => {
+                alert("សុំទោស មានបញ្ហាបន្តិចបន្តួច សូមសាកល្បងម្ដងទៀត។​ Sorry, there is a slight problem. Please try again.");
+                btn.disabled = false;
+                btn.innerText = "បញ្ជូនការបញ្ជាក់ / confirmation";
             });
-        </script>
+        });
+    </script>
         <hr class="divider">
             <!-- ផ្នែកទី៦៖ ចំណងដៃ (Gift Section) -->
         <div id="qr" style="margin-top: 50px;">
@@ -1293,6 +1306,7 @@
             }
         }, 1000);
     </script>
+    
     
 </body>
 </html>
