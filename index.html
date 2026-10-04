@@ -566,30 +566,50 @@
             }
         }
 
-        /* ------------------------------------- */
-        /* ប៊ូតុងតន្ត្រី និងអក្សរលោតៗ (Music Wrapper) */
+       /* ------------------------------------- */
+        /* ដាក់ប៊ូតុងតន្ត្រីទៅទីតាំងខាងលើខាងឆ្វេង */
         /* ------------------------------------- */
         .music-wrapper {
             position: fixed;
-            top: 20px;
-            right: 20px;
-            z-index: 100000;
+            top: 15px;    /* ให้อยู่ด้านบน */
+            left: 15px;   /* ให้อยู่มุมซ้าย */
+            z-index: 10000;
             display: flex;
             flex-direction: column; 
-            align-items: center;
+            align-items: flex-start; /* តម្រឹមអក្សរនិងប៊ូតុងទៅខាងឆ្វេងស្អាត */
         }
-
+        
         .music-text {
-            background: rgba(43, 27, 13, 0.8); /* ពណ៌ត្នោតថ្លាៗ */
-            color: #ebd39b; /* អក្សរពណ៌មាស */
-            padding: 5px 15px;
-            border: 1px solid #b88a44;
+            background-color: #fffdf5;
+            color: #800020; 
+            padding: 4px 10px;
+            border: 1px solid #d4af37; 
             border-radius: 20px;
-            font-size: 0.85rem;
-            margin-bottom: 10px;
-            box-shadow: 0 4px 10px rgba(0,0,0,0.5);
-            animation: bounceText 1.5s infinite;
+            font-size: 11px;
+            font-weight: bold;
+            margin-top: 5px; /* ให้อยู่ใต้ปุ่ม หรือปรับระยะตามต้องการ */
+            box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+            animation: bounceText 1.5s infinite; 
             white-space: nowrap;
+        }
+        
+        .music-btn {
+            position: relative !important;
+            top: auto !important;
+            left: auto !important;
+            width: 45px;
+            height: 45px;
+            background: linear-gradient(135deg, #e6c25e, #c59b27); 
+            border: 2px solid #fff;
+            border-radius: 50%;
+            font-size: 20px;
+            color: white;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+            cursor: pointer;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            outline: none;
         }
 
         @keyframes bounceText {
