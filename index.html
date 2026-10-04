@@ -675,16 +675,16 @@
         }
 
         /* ------------------------------------- */
-        /* កែតម្រូវទំហំ Countdown ឱ្យតូចល្មមស្អាត */
+        /* កែតម្រូវទំហំ Countdown ឱ្យតូចល្មមស្អាត (Updated) */
         /* ------------------------------------- */
         .countdown-section {
             margin-top: 15px;
-            padding: 12px;
-            background: rgba(43, 27, 13, 0.7);
-            border: 1px solid #b88a44;
+            padding: 15px;
+            background: #fffdf5 !important; /* ផ្លាស់ប្តូរមកផ្ទៃពណ៌ស្អាតស្រទន់ */
+            border: 2px solid #d4af37 !important; /* ស៊ុមពណ៌មាសច្បាស់ */
             border-radius: 12px;
             text-align: center;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.5);
+            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
             max-width: 90%;
             margin-left: auto;
             margin-right: auto;
@@ -692,37 +692,39 @@
 
         .countdown-title {
             font-family: 'Dancing Script', cursive;
-            font-size: 1.3rem; /* បង្រួមចំណងជើងឱ្យតូចល្មម */
-            color: var(--gold-accent);
+            font-size: 1.4rem; 
+            color: #800020 !important; /* ប្ដូរមកពណ៌ក្រហមដិតស្អាត */
             margin-bottom: 8px;
+            font-weight: bold;
         }
 
         .countdown-grid {
             display: flex;
             justify-content: center;
-            gap: 8px; /* បង្រួមគម្លាតប្រអប់នីមួយៗ */
+            gap: 8px; 
         }
 
         .countdown-box {
-            background: rgba(0, 0, 0, 0.4);
-            border: 1px solid #b88a44;
+            background: #ffffff !important; 
+            border: 1px solid #d4af37 !important;
             border-radius: 8px;
-            padding: 6px 8px;
-            min-width: 45px; /* បង្រួមទទឹងប្រអប់លេខ */
+            padding: 8px 10px;
+            min-width: 50px; 
         }
 
         .countdown-number {
             font-family: 'Battambang', sans-serif;
-            font-size: 1.1rem; /* បង្រួមទំហំលេខ */
+            font-size: 1.2rem; 
             font-weight: bold;
-            color: #fff;
+            color: #800020 !important; /* លេខរាប់ពណ៌ក្រហមដិតលេចច្បាស់ល្អ */
             display: block;
         }
 
         .countdown-label {
             font-family: 'Battambang', sans-serif;
-            font-size: 0.65rem; /* បង្រួមអក្សរ ថ្ងៃ ម៉ោង នាទី */
-            color: var(--gold-text);
+            font-size: 0.7rem; 
+            color: #333333 !important; /* អក្សរថ្ងៃ ម៉ោង នាទី ពណ៌ប្រផេះចាស់ងាយមើល */
+            font-weight: bold;
             text-transform: uppercase;
         }
         /* ------------------------------------- */
@@ -977,10 +979,10 @@
                 <p style="margin: 0; font-size: 0.9rem; color: #d1b88a;">ពិធីទទួលភ្ញៀវ (ពិធីជប់លៀង) / Reception (Banquet)</p>
             </div>
         </div>
-         <p style="font-size: 0.9rem; margin-bottom: 10px;">ពិធីជប់លៀងមង្គលការ (ម៉ោង ០៥:០០ ល្ងាច)<br> Wedding party at 5:00 PM</p>
-                <a href="https://calendar.google.com/calendar/render?action=TEMPLATE&text=Wedding+Reception+-+Van+Chankrisna+%26+Min+Sreylak&dates=20261122T170000Z/20261122T220000Z&details=ពិធីជប់លៀងភោជនាហារពេលល្ងាច&location=Phnom+Penh" target="_blank" class="add-to-cal-btn" style="font-size: 0.8rem; padding: 6px 15px;">
-                    📅 Save ថ្ងៃទី២២ (ពេលល្ងាច)
-                </a>
+         <p style="font-size: 0.9rem; margin-bottom: 10px;">Please add it to the calendar; it will serve as a reminder.</p>
+                <a href="https://calendar.google.com/calendar/render?action=TEMPLATE&text=Wedding+Reception+-+Van+Chankrisna+%26+Min+Sreylak&dates=20261121T170000Z/20261121T220000Z&details=ពិធីជប់លៀងភោជនាហារពេលល្ងាច&location=Phnom+Penh" target="_blank" class="add-to-cal-btn" style="display: inline-block; background: linear-gradient(135deg, #ebd39b, #b88a44); color: #351f0f; font-family: 'Battambang', sans-serif; font-size: 0.9rem; font-weight: bold; text-decoration: none; padding: 10px 20px; border-radius: 25px; box-shadow: 0 4px 10px rgba(0,0,0,0.2);">
+            📅 Add to calendar
+        </a>
      <hr class="divider">
             <!-- ផ្នែកទី៣៖ ទីតាំងកម្មវិធី (Map Section) -->
         <div id="map" style="margin-top: 40px; margin-bottom: 40px;">
@@ -990,7 +992,7 @@
             <div class="map-container">
                 <!-- ១. កន្លែងដាក់រូបថតផែនទី -->
                 <!-- សូមដូរពាក្យ "map-photo.jpg" ទៅជាឈ្មោះរូបផែនទីពិតប្រាកដរបស់បង -->
-                <img src="map-photo.jpg" alt="Wedding Map" class="map-image">
+                <img src="map.jpg" alt="Wedding Map" class="map-image">
                 
                 <!-- ២. ប៊ូតុង Link ទៅកាន់ Google Map -->
                 <!-- សូមយក Link Google Map របស់បង មក Paste ជំនួសកន្លែងសញ្ញា # នេះ -->
@@ -1121,35 +1123,37 @@
             <div style="font-size: 1.5rem; margin-top: 15px;">❤️❤️❤️</div>
         </div>
         <hr class="divider">
-          <!-- ប៊ូតុង Add to Calendar -->
-        <div class="cal-btn-container">
-          <p style="font-size: 0.9rem; margin-bottom: 10px;">ពិធីជប់លៀងមង្គលការ (ម៉ោង ០៥:០០ ល្ងាច)​ <br> Wedding party at 5:00 PM</p>
-                <a href="https://calendar.google.com/calendar/render?action=TEMPLATE&text=Wedding+Reception+-+Van+Chankrisna+%26+Min+Sreylak&dates=20261122T170000Z/20261122T220000Z&details=ពិធីជប់លៀងភោជនាហារពេលល្ងាច&location=Phnom+Penh" target="_blank" class="add-to-cal-btn" style="font-size: 0.8rem; padding: 6px 15px;">
-                    📅 Save ថ្ងៃទី២២ (ពេលល្ងាច)
-                </a>
+        <!-- ប្រអប់ Countdown ថ្ងៃមង្គលការ (រចនាស្អាតដូចរូបគំរូ) -->
+    <div class="countdown-section" style="margin: 25px auto; background: #fffdf5; border: 2px solid #d4af37; border-radius: 15px; padding: 20px; text-align: center; max-width: 90%; box-shadow: 0 4px 15px rgba(0,0,0,0.3);">
+        <div style="font-size: 1.1rem; color: #800020; font-weight: bold; margin-bottom: 5px;">
+            ⏳ រាប់ថយក្រោយដល់ថ្ងៃមង្គលការ​ <br> Countdown
         </div>
-        <!-- ប្រអប់ Countdown ថ្ងៃមង្គលការ -->
-        <div class="countdown-section reveal-on-scroll">
-            <h3 class="countdown-title">Counting Down To Our Big Day</h3>
-            <div class="countdown-grid">
-                <div class="countdown-box">
-                    <span id="days" class="countdown-number">00</span>
-                    <span class="countdown-label">ថ្ងៃ</span>
-                </div>
-                <div class="countdown-box">
-                    <span id="hours" class="countdown-number">00</span>
-                    <span class="countdown-label">ម៉ោង</span>
-                </div>
-                <div class="countdown-box">
-                    <span id="minutes" class="countdown-number">00</span>
-                    <span class="countdown-label">នាទី</span>
-                </div>
-                <div class="countdown-box">
-                    <span id="seconds" class="countdown-number">00</span>
-                    <span class="countdown-label">វិនាទី</span>
-                </div>
+        
+        
+        <div class="countdown-grid" style="display: flex; justify-content: center; gap: 8px; margin-bottom: 20px;">
+            <div class="countdown-box" style="background: #ffffff; border: 1px solid #d4af37; border-radius: 8px; padding: 10px 8px; min-width: 50px;">
+                <span id="days" class="countdown-number" style="font-family: 'Battambang', sans-serif; font-size: 1.2rem; font-weight: bold; color: #b88a44; display: block;">00</span>
+                <span class="countdown-label" style="font-family: 'Battambang', sans-serif; font-size: 0.75rem; color: #333333; font-weight: bold; text-transform: uppercase;">ថ្ងៃ DD</span>
+            </div>
+            <div class="countdown-box" style="background: #ffffff; border: 1px solid #d4af37; border-radius: 8px; padding: 10px 8px; min-width: 50px;">
+                <span id="hours" class="countdown-number" style="font-family: 'Battambang', sans-serif; font-size: 1.2rem; font-weight: bold; color: #b88a44; display: block;">00</span>
+                <span class="countdown-label" style="font-family: 'Battambang', sans-serif; font-size: 0.75rem; color: #333333; font-weight: bold; text-transform: uppercase;">ម៉ោងT</span>
+            </div>
+            <div class="countdown-box" style="background: #ffffff; border: 1px solid #d4af37; border-radius: 8px; padding: 10px 8px; min-width: 50px;">
+                <span id="minutes" class="countdown-number" style="font-family: 'Battambang', sans-serif; font-size: 1.2rem; font-weight: bold; color: #b88a44; display: block;">00</span>
+                <span class="countdown-label" style="font-family: 'Battambang', sans-serif; font-size: 0.75rem; color: #333333; font-weight: bold; text-transform: uppercase;">នាទីMN</span>
+            </div>
+            <div class="countdown-box" style="background: #ffffff; border: 1px solid #d4af37; border-radius: 8px; padding: 10px 8px; min-width: 50px;">
+                <span id="seconds" class="countdown-number" style="font-family: 'Battambang', sans-serif; font-size: 1.2rem; font-weight: bold; color: #b88a44; display: block;">00</span>
+                <span class="countdown-label" style="font-family: 'Battambang', sans-serif; font-size: 0.75rem; color: #333333; font-weight: bold; text-transform: uppercase;">វិនាទីS</span>
             </div>
         </div>
+
+        <!-- ប៊ូតុង Add to Calendar នៅខាងក្នុងប្រអប់ផ្ទាល់ ស្របតាមគំរូ -->
+       <a href="https://calendar.google.com/calendar/render?action=TEMPLATE&text=Wedding+Reception+-+Van+Chankrisna+%26+Min+Sreylak&dates=20261121T170000Z/20261121T220000Z&details=ពិធីជប់លៀងភោជនាហារពេលល្ងាច&location=Phnom+Penh" target="_blank" class="add-to-cal-btn" style="display: inline-block; background: linear-gradient(135deg, #ebd39b, #b88a44); color: #351f0f; font-family: 'Battambang', sans-serif; font-size: 0.9rem; font-weight: bold; text-decoration: none; padding: 10px 20px; border-radius: 25px; box-shadow: 0 4px 10px rgba(0,0,0,0.2);">
+            📅 Add to calendar
+        </a>
+    </div>
 
     </div> <!-- បិទ Main Content -->
  
@@ -1268,31 +1272,26 @@
                 });
             }
         }, { once: true });
-        // កំណត់កាលបរិច្ឆេទថ្ងៃមង្គលការរបស់បង (ឆ្នាំ-ខែ-ថ្ងៃ ម៉ោង) ឧទាហរណ៍៖ 2026-12-31T08:00:00
-        const weddingDate = new Date("2026-11-21T08:00:00").getTime();
+        // កំណត់ថ្ងៃទី២១ ខែវិច្ឆិកា ឆ្នាំ២០២៦
+        const weddingDate = new Date("November 21, 2026 00:00:00").getTime();
 
-        function updateCountdown() {
+        const countdownInterval = setInterval(function() {
             const now = new Date().getTime();
             const distance = weddingDate - now;
-
-            if (distance < 0) {
-                document.querySelector(".countdown-section").innerHTML = "<h3 class='countdown-title'>Happy Wedding Day! 🎉</h3>";
-                return;
-            }
 
             const days = Math.floor(distance / (1000 * 60 * 60 * 24));
             const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
             const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
             const seconds = Math.floor((distance % (1000 * 60)) / 1000);
 
-            document.getElementById("days").innerText = String(days).padStart(2, '0');
-            document.getElementById("hours").innerText = String(hours).padStart(2, '0');
-            document.getElementById("minutes").innerText = String(minutes).padStart(2, '0');
-            document.getElementById("seconds").innerText = String(seconds).padStart(2, '0');
-        }
-
-        setInterval(updateCountdown, 1000);
-        updateCountdown();
+            // បញ្ចូលតម្លៃទៅក្នុង HTML Elements
+            if (document.getElementById("days")) {
+                document.getElementById("days").innerText = days < 10 ? "0" + days : days;
+                document.getElementById("hours").innerText = hours < 10 ? "0" + hours : hours;
+                document.getElementById("minutes").innerText = minutes < 10 ? "0" + minutes : minutes;
+                document.getElementById("seconds").innerText = seconds < 10 ? "0" + seconds : seconds;
+            }
+        }, 1000);
     </script>
     
 </body>
