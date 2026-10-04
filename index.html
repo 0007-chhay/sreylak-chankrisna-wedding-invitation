@@ -1058,7 +1058,8 @@
                 </form>
             </div>
         </div>
-
+            <!-- កូដកាំជ្រួច -->
+            <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.9.2/dist/confetti.browser.min.js"></script>
         <!-- Script សម្រាប់បញ្ជូនទិន្នន័យ (ដូចកូដចាស់របស់បង) -->
        <script>
         let lastSubmitTime = 0; // កត់ត្រាពេលវេលាចុចចុងក្រោយ
@@ -1088,6 +1089,17 @@
             .then(response => {
                 lastSubmitTime = new Date().getTime(); // កត់ត្រាពេលផ្ញើបានជោគជ័យ
                 alert("អរគុណសម្រាប់ការបញ្ជាក់ការចូលរួម! Thank you for confirming your participation!");
+               
+                // បាញ់កាំជ្រួចអបអរសាទរ
+            if (typeof confetti === "function") {
+                confetti({
+                    particleCount: 100,
+                    spread: 70,
+                    origin: { y: 0.6 }
+                });
+            }
+               
+               
                 form.reset(); 
                 btn.disabled = false;
                 btn.innerText = "បញ្ជូនការបញ្ជាក់ / confirmation";
