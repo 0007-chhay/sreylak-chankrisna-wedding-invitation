@@ -1332,34 +1332,76 @@
         </script>
 
         <script>
-            document.getElementById("wishesForm").addEventListener("submit", function(e) {
-                e.preventDefault();
-
-                var guestMessage = document.getElementById("guestMessage").value;
-                var textToSend = "💌 មានសារជូនពរថ្មីពីភ្ញៀវកិត្តិយស!\n\n💬 ពាក្យជូនពរ: " + guestMessage;
-
-                // ហៅទៅកាន់ Serverless API របស់យើង
-                fetch('/api/send-wish', {
-                    method: "POST",
-                    headers: {
-                        "Content-Type": "application/json"
-                    },
-                    body: JSON.stringify({ message: textToSend })
-                })
-                .then(response => response.json())
-                .then(data => {
-                    if (data.success) {
-                        alert("អរគុណច្រើន! ពាក្យជូនពររបស់អ្នកត្រូវបានបញ្ជូនជោគជ័យ។ Thank you very much! Your well wishes have been successfully sent. ");
-                        document.getElementById("wishesForm").reset();
-                    } else {
-                        alert("សូមព្យាយាមម្ដងទៀត។ Please try again.");
+           document.addEventListener("DOMContentLoaded", function() {
+                    
+                    if (localStorage.getItem("hasSentWish") === "true") {
+                        lockFormAfterSend();
                     }
-                })
-                .catch(error => {
-                    console.error("Error:", error);
-                    alert("មិនអាចតភ្ជាប់ទៅកាន់ប្រព័ន្ធបានទេ! Unable to connect to the system!");
                 });
-            });
+
+                document.getElementById("wishesForm").addEventListener("submit", function(e) {
+                    e.preventDefault();
+
+                   
+                    if (localStorage.getItem("hasSentWish") === "true") {
+                        alert("អ្នកបានផ្ញើពាក្យជូនពររួចរាល់ហើយ! You have successfully sent your well wishes!");
+                        return;
+                    }
+
+                    var guestMessage = document.getElementById("guestMessage").value.trim();
+                    
+                    if (!guestMessage) {
+                        alert("សូមសរសេរពាក្យជូនពរសិន! Please write a message of well-wishes first!");
+                        return;
+                    }
+
+                    var textToSend = "💌 មានសារជូនពរថ្មីពីភ្ញៀវកិត្តិយស!\n\n💬 ពាក្យជូនពរ: " + guestMessage;
+                    var submitBtn = document.querySelector("#wishesForm buttontype='submit'");
+                    
+                    submitBtn.innerText = "កំពុងផ្ញើ...";
+                    submitBtn.disabled = true;
+
+                    
+                    fetch('/api/send-wish', {
+                        method: "POST",
+                        headers: {
+                            "Content-Type": "application/json"
+                        },
+                        body: JSON.stringify({ message: textToSend })
+                    })
+                    .then(response => response.json())
+                    .then(data => {
+                        if (data.success) {
+                            alert("អរគុណច្រើន! ពាក្យជូនពររបស់អ្នកត្រូវបានបញ្ជូនជោគជ័យ។ Thank you very much! Your well wishes have been successfully sent.");
+                            
+                            
+                            localStorage.setItem("hasSentWish", "true");
+                            lockFormAfterSend();
+
+                        } else {
+                            alert("សូមព្យាយាមម្ដងទៀត។ Please try again.");
+                            submitBtn.innerText = "បញ្ជូន / Send";
+                            submitBtn.disabled = false;
+                        }
+                    })
+                    .catch(error => {
+                        console.error("Error:", error);
+                        alert("មិនអាចតភ្ជាប់ទៅកាន់ប្រព័ន្ធបានទេ! Unable to connect to the system!");
+                        submitBtn.innerText = "បញ្ជូន / Send";
+                        submitBtn.disabled = false;
+                    });
+                });
+
+                
+                function lockFormAfterSend() {
+                    var guestMessageInput = document.getElementById("guestMessage");
+                    var submitBtn = document.querySelector("#wishesForm button[type='submit']");
+
+                    guestMessageInput.value = "អរគុណចំពោះពាក្យជូនពរដ៏ប្រពៃរបស់អ្នក! ❤️ Thank you for your wonderful wishes!";
+                    guestMessageInput.disabled = true; 
+                    submitBtn.innerText = "បានផ្ញើរួចរាល់ / Sent";
+                    submitBtn.disabled = true; 
+                }
         </script>
 
     <!-- ផ្ទាំងរូបភាពធំ (Modal Container) -->
