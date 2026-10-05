@@ -234,17 +234,25 @@
             }
         }
         /* រូបថត (បើមាន) */
-        .main-photo {
+                .main-photo {
             width: 100%;
-            height: 350px; /* កំណត់កម្ពស់ឲ្យនៅត្រឹម 350px កុំឲ្យវែងពេក */
-            object-fit: cover; /* កាត់តម្រឹមឲ្យពេញប្រអប់ស្អាត ដោយមិនខូចរាង */
-            object-position: center 50%; /* ផ្តោតបង្ហាញផ្នែកខាងលើ (ផ្ទៃមុខ) */
+            height: 480px; /* កែពី 350px មកខ្ពស់បន្តិចល្មមសម្រាប់រូបបញ្ឈរ */
+            object-fit: cover; /* កាត់ព្រំឱ្យពេញប្រអប់ស្ដង់ដារ ដោយមិនខូចទ្រង់ទ្រាយ */
+            object-position: center 20%; /* ទាញផ្ដោតទៅលើផ្នែកខាងលើ (ក្បាលនិងមុខ) */
             border-radius: 12px;
             border: 2px solid var(--gold-accent);
             box-shadow: 0 4px 10px rgba(0,0,0,0.5);
             margin: 15px 0;
         }
-
+       /* បន្ថែម Class ដាច់ដោយឡែកសម្រាប់រូបភាពកណ្ដាល ធានាមិនប៉ះពាល់អក្សរ ឬផ្នែកផ្សេង */
+        .middle-couple-img {
+            display: inline-block !important;
+            width: 50px !important; /* កំណត់ទំហំតូចល្មមស្អាតតាមចិត្តចង់ (អាចសារ៉េ 40px - 60px) */
+            height: auto !important;
+            vertical-align: middle !important;
+            margin: 0 10px !important;
+            object-fit: contain !important;
+        }
         /* ------------------------------------- */
         /* បែបផែនពន្លឺភ្លឹបភ្លែត (Sparkles) */
         /* ------------------------------------- */
@@ -521,7 +529,7 @@
         /* ------------------------------------- */
         .thank-you-section {
             margin-top: 60px;
-            margin-bottom: 120px; /* ទុកចន្លោះខាងក្រោមឲ្យធំ ដើម្បីកុំឲ្យបាំងប៊ូតុង Nav */
+            margin-bottom: 60px; /* ទុកចន្លោះខាងក្រោមឲ្យធំ ដើម្បីកុំឲ្យបាំងប៊ូតុង Nav */
             text-align: center;
         }
 
@@ -811,6 +819,50 @@
         .gallery-custom {
             animation: fadeInGallery 1.2s ease-out forwards;
         }
+
+            /* ២. កូដសម្រាប់បែបផែនមេអំបៅមាសហើរពេញអេក្រង់ */
+        .butterfly-flying-container {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none; /* មិនឱ្យរាំងស្ទះការចុចលើប៊ូតុងផ្សេងៗ */
+            z-index: 9998;
+            overflow: hidden;
+        }
+
+        .floating-golden-butterfly {
+            position: absolute;
+            width: 35px;
+            height: 35px;
+            background-image: url('butterfly.svg'); /* ឈ្មោះឯកសារដែលបងបានទាញយកមក */
+            background-size: contain;
+            background-repeat: no-repeat;
+            animation: flyRandomly 6s ease-in-out infinite;
+        }
+
+        /* ចលនាមេអំបៅហើរវဲៗចុះឡើង */
+        @keyframes flyRandomly {
+            0% {
+                transform: translate(0, 100vh) scale(0.6) rotate(0deg);
+                opacity: 0;
+            }
+            20% {
+                opacity: 1;
+            }
+            50% {
+                transform: translate(var(--randomX1), 50vh) scale(1.1) rotate(45deg);
+            }
+            80% {
+                opacity: 1;
+            }
+            100% {
+                transform: translate(var(--randomX2), -10vh) scale(0.7) rotate(90deg);
+                opacity: 0;
+            }
+        }
+
     </style>
 </head>
 <body>
@@ -847,13 +899,16 @@
                 <p>កូនប្រុសនាម</p>
                 <h2 class="animate-text">វ៉ាន ច័ន្ទគ្រឹស្នា</h2>
             </div>
+           <!-- រូបភាពអក្សរមាសកណ្ដាល (ដាក់នៅទីនេះ ដើម្បីកុំឱ្យធ្លាក់ចុះក្រោម) -->
+             <img src="sl.png" alt="Couple" class="middle-couple-img">
+
             <div style="text-align: center;">
                 <p>កូនស្រីនាម</p>
                 <h2 class="animate-text">មិន ស្រីលក្ខ</h2>
             </div>
         </div>
-         <!-- ប៊ូតុងដាក់រូប (អាចប្តូរដាក់ <img> វិញបើចង់បានរូបថត) -->
-        <img src="0O4A0271.jpg" alt="Couple Photo" class="main-photo">
+         <!-- ប៊ូតុងដាក់រូប (អាចប្តូរដាក់ <img> វិញបើចង់បានរូបថត)0O4A0271.jpg -->
+        <img src="first.jpg" alt="Couple Photo" class="main-photo">
 
         <!-- អក្សរអង់គ្លេសខាងក្រោមរូបថតកណ្តាល -->
         <div class="eng-names-wrapper">
@@ -1028,11 +1083,26 @@
         <div class="gallery-row gallery-1-col">
         <img src="photo6.jpg" alt="Memory 6" onclick="openModal(this.src)">
         </div>
+        <!-- === ឈុតទី ២ (៦ រូបបន្ថែមទៀត) === -->
+        <div class="gallery-row gallery-2-cols" style="margin-top: 30px;">
+            <img src="photo7.jpg" alt="Memory 7" onclick="openModal(this.src)">
+            <img src="photo8.jpg" alt="Memory 8" onclick="openModal(this.src)">
         </div>
+
+        <div class="gallery-row gallery-3-cols">
+            <img src="photo9.jpg" alt="Memory 9" onclick="openModal(this.src)">
+            <img src="photo10.jpg" alt="Memory 10" onclick="openModal(this.src)">
+            <img src="photo11.jpg" alt="Memory 11" onclick="openModal(this.src)">
+        </div>
+
+        <div class="gallery-row gallery-1-col">
+            <img src="photo12.jpg" alt="Memory 12" onclick="openModal(this.src)">
+        </div>
+            </div>
         </div>
          <hr class="divider">
         <!-- ផ្នែកទី៥៖ បញ្ជាក់ការចូលរួម (RSVP Section) -->
-        <div id="rsvp" style="margin-top: 50px; margin-bottom: 150px;">
+        <div id="rsvp" style="margin-top: 50px; margin-bottom: 40px;">
             <h2 class="main-title">បញ្ជាក់ការចូលរួម<br><span style="font-size: 1.2rem;">Confirm participation</span></h2>
             
             <div class="rsvp-card">
@@ -1054,101 +1124,14 @@
                         <option value="លក្ខណៈគ្រួសារ">ចូលរួមជាលក្ខណៈគ្រួសារ / Participate as a family</option>
                     </select>
                     
-                    <button type="submit" id="submitBtn" class="rsvp-btn">បញ្ជូនការបញ្ជាក់ / confirmation</button>
+                    <button type="submit" id="submitBtn" class="rsvp-btn">បញ្ជូន / confirmation</button>
                 </form>
             </div>
         </div>
-            <!-- កូដកាំជ្រួច -->
-          <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.9.2/dist/confetti.browser.min.js"></script>
-<script>
-    function isValidName(str) {
-        const regex = /^[\u1780-\u17FFa-zA-Z\s&]+$/;
-        return regex.test(str);
-    }
-
-    document.getElementById("rsvpForm").addEventListener("submit", function(e) {
-        e.preventDefault(); 
-        
-        if (localStorage.getItem('has_submitted') === 'true') {
-            alert("ឧបករណ៍នេះបានបញ្ជាក់ការចូលរួមរួចរាល់ហើយ / This device has already confirmed participation.");
-            return;
-        }
-        
-        var form = e.target;
-        var data = new FormData(form);
-        var nameValue = data.get('name') ? data.get('name').trim() : '';
-        var attendanceValue = data.get('attendance') ? data.get('attendance') : '';
-        var guestValue = data.get('guest') ? data.get('guest') : '';
-
-        if (nameValue === "") {
-            alert("សូមបញ្ចូលឈ្មោះរបស់អ្នក។ / Please enter your name.");
-            return;
-        }
-
-        if (nameValue.length > 60) {
-            alert("ឈ្មោះវែងពេក! / Name is too long!");
-            return;
-        }
-
-        if (!isValidName(nameValue)) {
-            alert("សូមបញ្ចូលឈ្មោះឱ្យបានត្រឹមត្រូវ ។ / Invalid characters!");
-            return;
-        }
-
-        var btn = document.getElementById("submitBtn");
-        btn.disabled = true;
-        btn.innerText = "កំពុងបញ្ជូន... / Sending..."; 
-        document.activeElement.blur();
-
-        // ផ្ញើទិន្នន័យទៅកាន់ Serverless Proxy របស់យើង (securet/dakjol)
-        fetch("/api/dakjol", {
-            method: "POST",
-            headers: {
-                "Content-Type": "application/json"
-            },
-            body: JSON.stringify({
-                name: nameValue,
-                attendance: attendanceValue,
-                guest: guestValue
-            })
-        })
-        .then(response => response.json())
-        .then(result => {
-            if(result.status === "error") {
-                alert("មានបញ្ហាកើតឡើង៖ " + result.message);
-                btn.disabled = false;
-                btn.innerText = "បញ្ជូនការបញ្ជាក់ / Submit";
-                return;
-            }
-
-            localStorage.setItem('has_submitted', 'true');
-            alert("អរគុណសម្រាប់ការបញ្ជាក់ការចូលរួម! Thank you for confirming your participation!");
-            
-            if (typeof confetti === "function") {
-                confetti({
-                    particleCount: 100,
-                    spread: 70,
-                    origin: { y: 0.6 }
-                });
-            }
-
-            form.reset(); 
-            btn.disabled = false;
-            btn.innerText = "បញ្ជូនការបញ្ជាក់ / Submit";
-        })
-        .catch(error => {
-            localStorage.setItem('has_submitted', 'true');
-            alert("អរគុណសម្រាប់ការបញ្ជាក់ការចូលរួម! Thank you for confirming your participation!");
-            form.reset();
-            btn.disabled = false;
-            btn.innerText = "បញ្ជូនការបញ្ជាក់ / Submit";
-        });
-    });
-</script>
         <hr class="divider">
             <!-- ផ្នែកទី៦៖ ចំណងដៃ (Gift Section) -->
         <div id="qr" style="margin-top: 50px;">
-            <h2 class="main-title">ចំណងដៃ<br><span style="font-size: 1.2rem;">Gift given at a celebration</span></h2>
+            <h2 class="main-title">🎁ចំណងដៃ🎁<br><span style="font-size: 1.2rem;">Gift given at a celebration</span></h2>
             
             <div class="gift-card">
                 <p>សម្រាប់ញាតិមិត្តដែលមិនអាចអញ្ជើញចូលរួមបាន ប៉ុន្តែមានបំណងផ្ញើជាចំណងដៃដល់ពួកយើង សូមប្រើប្រាស់ QR Code ខាងក្រោមដោយក្ដីអនុគ្រោះ៖<br>
@@ -1160,6 +1143,21 @@
                 </div>
             </div>
         </div>
+        <hr class="divider">
+         <!-- ផ្នែកផ្ញើសារជូនពរ (Wishes Section) -->
+             <h2 class="main-title">🌸សារជូនពរ🌸<br><span style="font-size: 1.2rem;">Wishes</span></h2>
+            <div id="wishes-section" style="margin-top: 20px; margin-bottom: 40px;">
+                <div class="rsvp-card">
+                    <p style="text-align: center; margin-bottom: 20px;">សូមសរសេរពាក្យជូនពរដល់គូស្វាមីភរិយា<br>Please write your wishes to the couple.</p>
+                    
+                    <form id="wishesForm" class="rsvp-form">
+                        
+                        <textarea id="guestMessage" placeholder="សរសេរពាក្យជូនពរដល់គូស្វាមីភរិយា... write your wishes here.." rows="4" required style="width: 100%; padding: 12px; border-radius: 8px; border: 1px solid #d1b88a; background: rgba(0,0,0,0.4); color: #fff; box-sizing: border-box; resize: none; margin-bottom: 15px;"></textarea>
+                        
+                        <button type="submit" class="rsvp-btn">បញ្ជូនពាក្យជូនពរ / Send</button>
+                    </form>
+                </div>
+            </div>
 
         <hr class="divider">
 
@@ -1179,7 +1177,7 @@
                 Thank you from the bottom of our hearts for joining us on our special day. Your presence and warm wishes mean the world to us.
             </p>
             
-            <div style="font-size: 1.5rem; margin-top: 15px;">❤️❤️❤️</div>
+            <div style="font-size: 1.5rem; margin-top: 10px;">❤️❤️❤️</div>
         </div>
         <hr class="divider">
         <!-- ប្រអប់ Countdown ថ្ងៃមង្គលការ (រចនាស្អាតដូចរូបគំរូ) -->
@@ -1218,11 +1216,11 @@
  
     <!-- របារប៊ូតុងខាងក្រោម (Bottom Navigation) -->
   <div class="bottom-nav">
-        <a href="#schedule" class="nav-item">📅</a>
-        <a href="#map" class="nav-item">📍</a>
-        <a href="#gallery" class="nav-item">🖼️</a>
-        <a href="#qr" class="nav-item">💸</a>
-        <a href="#rsvp" class="nav-item">✉️</a>
+        <a href="#schedule" class="nav-item">⏰</a>
+        <a href="#map" class="nav-item">🗺️</a>
+        <a href="#gallery" class="nav-item">📸</a>
+        <a href="#qr" class="nav-item">🎁</a>
+        <a href="#rsvp" class="nav-item">💌</a>
     </div>
 
     <!-- Script បង្កើតពន្លឺភ្លឹបភ្លែត (Sparkles) ពេញអេក្រង់ -->
@@ -1244,6 +1242,125 @@
         }
         setInterval(createSparkle, 300); 
     </script>
+
+    <!-- កូដកាំជ្រួច -->
+                <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.9.2/dist/confetti.browser.min.js"></script>
+        <script>
+            function isValidName(str) {
+                const regex = /^[\u1780-\u17FFa-zA-Z\s&]+$/;
+                return regex.test(str);
+            }
+
+            document.getElementById("rsvpForm").addEventListener("submit", function(e) {
+                e.preventDefault(); 
+                
+                if (localStorage.getItem('has_submitted') === 'true') {
+                    alert("ឧបករណ៍នេះបានបញ្ជាក់ការចូលរួមរួចរាល់ហើយ / This device has already confirmed participation.");
+                    return;
+                }
+                
+                var form = e.target;
+                var data = new FormData(form);
+                var nameValue = data.get('name') ? data.get('name').trim() : '';
+                var attendanceValue = data.get('attendance') ? data.get('attendance') : '';
+                var guestValue = data.get('guest') ? data.get('guest') : '';
+
+                if (nameValue === "") {
+                    alert("សូមបញ្ចូលឈ្មោះរបស់អ្នក។ / Please enter your name.");
+                    return;
+                }
+
+                if (nameValue.length > 60) {
+                    alert("ឈ្មោះវែងពេក! / Name is too long!");
+                    return;
+                }
+
+                if (!isValidName(nameValue)) {
+                    alert("សូមបញ្ចូលឈ្មោះឱ្យបានត្រឹមត្រូវ ។ / Invalid characters!");
+                    return;
+                }
+
+                var btn = document.getElementById("submitBtn");
+                btn.disabled = true;
+                btn.innerText = "កំពុងបញ្ជូន... / Sending..."; 
+                document.activeElement.blur();
+
+                // ផ្ញើទិន្នន័យទៅកាន់ Serverless Proxy របស់យើង (securet/dakjol)
+                fetch("/api/dakjol", {
+                    method: "POST",
+                    headers: {
+                        "Content-Type": "application/json"
+                    },
+                    body: JSON.stringify({
+                        name: nameValue,
+                        attendance: attendanceValue,
+                        guest: guestValue
+                    })
+                })
+                .then(response => response.json())
+                .then(result => {
+                    if(result.status === "error") {
+                        alert("មានបញ្ហាកើតឡើង៖ " + result.message);
+                        btn.disabled = false;
+                        btn.innerText = "បញ្ជូនការបញ្ជាក់ / Submit";
+                        return;
+                    }
+
+                    localStorage.setItem('has_submitted', 'true');
+                    alert("អរគុណសម្រាប់ការបញ្ជាក់ការចូលរួម! Thank you for confirming your participation!");
+                    
+                    if (typeof confetti === "function") {
+                        confetti({
+                            particleCount: 100,
+                            spread: 70,
+                            origin: { y: 0.6 }
+                        });
+                    }
+
+                    form.reset(); 
+                    btn.disabled = false;
+                    btn.innerText = "បញ្ជូនការបញ្ជាក់ / Submit";
+                })
+                .catch(error => {
+                    localStorage.setItem('has_submitted', 'true');
+                    alert("អរគុណសម្រាប់ការបញ្ជាក់ការចូលរួម! Thank you for confirming your participation!");
+                    form.reset();
+                    btn.disabled = false;
+                    btn.innerText = "បញ្ជូនការបញ្ជាក់ / Submit";
+                });
+            });
+        </script>
+
+        <script>
+            document.getElementById("wishesForm").addEventListener("submit", function(e) {
+                e.preventDefault();
+
+                var guestMessage = document.getElementById("guestMessage").value;
+                var textToSend = "💌 មានសារជូនពរថ្មីពីភ្ញៀវកិត្តិយស!\n\n💬 ពាក្យជូនពរ: " + guestMessage;
+
+                // ហៅទៅកាន់ Serverless API របស់យើង
+                fetch('/api/send-wish', {
+                    method: "POST",
+                    headers: {
+                        "Content-Type": "application/json"
+                    },
+                    body: JSON.stringify({ message: textToSend })
+                })
+                .then(response => response.json())
+                .then(data => {
+                    if (data.success) {
+                        alert("អរគុណច្រើន! ពាក្យជូនពររបស់អ្នកត្រូវបានបញ្ជូនជោគជ័យ។ Thank you very much! Your well wishes have been successfully sent. ");
+                        document.getElementById("wishesForm").reset();
+                    } else {
+                        alert("សូមព្យាយាមម្ដងទៀត។ Please try again.");
+                    }
+                })
+                .catch(error => {
+                    console.error("Error:", error);
+                    alert("មិនអាចតភ្ជាប់ទៅកាន់ប្រព័ន្ធបានទេ! Unable to connect to the system!");
+                });
+            });
+        </script>
 
     <!-- ផ្ទាំងរូបភាពធំ (Modal Container) -->
     <!-- ពេលចុចលើផ្ទៃខ្មៅ ឬប៊ូតុងខ្វែង វានឹងបិទរូបវិញ -->
@@ -1352,7 +1469,43 @@
             }
         }, 1000);
     </script>
-    
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+    // បង្កើតកន្លែងផ្ទុកមេអំបៅ
+    let container = document.createElement('div');
+    container.className = 'butterfly-flying-container';
+    document.body.appendChild(container);
+
+    // បង្កើតមេអំបៅជាបន្តបន្ទាប់
+    function spawnButterfly() {
+        let butterfly = document.createElement('div');
+        butterfly.className = 'floating-golden-butterfly';
+        
+        // កំណត់ទីតាំងចាប់ផ្ដើម និងទិសដៅហើរផ្ដេកខុសៗគ្នា
+        let startLeft = Math.random() * window.innerWidth;
+        let randomX1 = (Math.random() - 0.5) * 150;
+        let randomX2 = (Math.random() - 0.5) * 250;
+        
+        butterfly.style.left = startLeft + 'px';
+        butterfly.style.setProperty('--randomX1', randomX1 + 'px');
+        butterfly.style.setProperty('--randomX2', randomX2 + 'px');
+        
+        // កំណត់ល្បឿនហើរខុសគ្នាខ្លះ
+        let duration = 4 + Math.random() * 4;
+        butterfly.style.animationDuration = duration + 's';
+
+        container.appendChild(butterfly);
+
+        // លុបចោលវិញពេលហើរផុតដើម្បីកុំឱ្យធ្ងន់ទំព័រ
+        setTimeout(() => {
+            butterfly.remove();
+        }, duration * 1000);
+    }
+
+// បង្កើតមេអំបៅថ្មីរៀងរាល់ ៦០០មីលីវិនាទី
+    setInterval(spawnButterfly, 600);
+});
+    </script>
     
 </body>
 </html>
