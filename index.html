@@ -1243,93 +1243,111 @@
         setInterval(createSparkle, 300); 
     </script>
 
-    <!-- កូដកាំជ្រួច -->
+                    <!-- កូដកាំជ្រួច -->
                 <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.9.2/dist/confetti.browser.min.js"></script>
-        <script>
-            function isValidName(str) {
-                const regex = /^[\u1780-\u17FFa-zA-Z\s&]+$/;
-                return regex.test(str);
-            }
-
-            document.getElementById("rsvpForm").addEventListener("submit", function(e) {
-                e.preventDefault(); 
-                
-                if (localStorage.getItem('has_submitted') === 'true') {
-                    alert("ឧបករណ៍នេះបានបញ្ជាក់ការចូលរួមរួចរាល់ហើយ / This device has already confirmed participation.");
-                    return;
-                }
-                
-                var form = e.target;
-                var data = new FormData(form);
-                var nameValue = data.get('name') ? data.get('name').trim() : '';
-                var attendanceValue = data.get('attendance') ? data.get('attendance') : '';
-                var guestValue = data.get('guest') ? data.get('guest') : '';
-
-                if (nameValue === "") {
-                    alert("សូមបញ្ចូលឈ្មោះរបស់អ្នក។ / Please enter your name.");
-                    return;
-                }
-
-                if (nameValue.length > 60) {
-                    alert("ឈ្មោះវែងពេក! / Name is too long!");
-                    return;
-                }
-
-                if (!isValidName(nameValue)) {
-                    alert("សូមបញ្ចូលឈ្មោះឱ្យបានត្រឹមត្រូវ ។ / Invalid characters!");
-                    return;
-                }
-
-                var btn = document.getElementById("submitBtn");
-                btn.disabled = true;
-                btn.innerText = "កំពុងបញ្ជូន... / Sending..."; 
-                document.activeElement.blur();
-
-                // ផ្ញើទិន្នន័យទៅកាន់ Serverless Proxy របស់យើង (securet/dakjol)
-                fetch("/api/dakjol", {
-                    method: "POST",
-                    headers: {
-                        "Content-Type": "application/json"
-                    },
-                    body: JSON.stringify({
-                        name: nameValue,
-                        attendance: attendanceValue,
-                        guest: guestValue
-                    })
-                })
-                .then(response => response.json())
-                .then(result => {
-                    if(result.status === "error") {
-                        alert("មានបញ្ហាកើតឡើង៖ " + result.message);
-                        btn.disabled = false;
-                        btn.innerText = "បញ្ជូនការបញ្ជាក់ / Submit";
-                        return;
+                <script>
+                    function isValidName(str) {
+                        const regex = /^[\u1780-\u17FFa-zA-Z\s&]+$/;
+                        return regex.test(str);
                     }
 
-                    localStorage.setItem('has_submitted', 'true');
-                    alert("អរគុណសម្រាប់ការបញ្ជាក់ការចូលរួម! Thank you for confirming your participation!");
                     
-                    if (typeof confetti === "function") {
-                        confetti({
-                            particleCount: 100,
-                            spread: 70,
-                            origin: { y: 0.6 }
-                        });
-                    }
+                    window.addEventListener("DOMContentLoaded", function() {
+                        if (localStorage.getItem('has_submitted') === 'true') {
+                            var btn = document.getElementById("submitBtn");
+                            if (btn) {
+                                btn.disabled = true;
+                                btn.innerText = "បានបញ្ជូនរួច / Sent";
+                            }
+                        }
+                    });
 
-                    form.reset(); 
-                    btn.disabled = false;
-                    btn.innerText = "បញ្ជូនការបញ្ជាក់ / Submit";
-                })
-                .catch(error => {
-                    localStorage.setItem('has_submitted', 'true');
-                    alert("អរគុណសម្រាប់ការបញ្ជាក់ការចូលរួម! Thank you for confirming your participation!");
-                    form.reset();
-                    btn.disabled = false;
-                    btn.innerText = "បញ្ជូនការបញ្ជាក់ / Submit";
-                });
-            });
-        </script>
+                    document.getElementById("rsvpForm").addEventListener("submit", function(e) {
+                        e.preventDefault(); 
+                        
+                        if (localStorage.getItem('has_submitted') === 'true') {
+                            alert("ឧបករណ៍នេះបានបញ្ជាក់ការចូលរួមរួចរាល់ហើយ / This device has already confirmed participation.");
+                            var btn = document.getElementById("submitBtn");
+                            if (btn) {
+                                btn.disabled = true;
+                                btn.innerText = "បានបញ្ជូនរួច / Sent";
+                            }
+                            return;
+                        }
+                        
+                        var form = e.target;
+                        var data = new FormData(form);
+                        var nameValue = data.get('name') ? data.get('name').trim() : '';
+                        var attendanceValue = data.get('attendance') ? data.get('attendance') : '';
+                        var guestValue = data.get('guest') ? data.get('guest') : '';
+
+                        if (nameValue === "") {
+                            alert("សូមបញ្ចូលឈ្មោះរបស់អ្នក។ / Please enter your name.");
+                            return;
+                        }
+
+                        if (nameValue.length > 60) {
+                            alert("ឈ្មោះវែងពេក! / Name is too long!");
+                            return;
+                        }
+
+                        if (!isValidName(nameValue)) {
+                            alert("សូមបញ្ចូលឈ្មោះឱ្យបានត្រឹមត្រូវ ។ / Invalid characters!");
+                            return;
+                        }
+
+                        var btn = document.getElementById("submitBtn");
+                        btn.disabled = true;
+                        btn.innerText = "កំពុងបញ្ជូន... / Sending..."; 
+                        document.activeElement.blur();
+
+                        
+                        fetch("/api/dakjol", {
+                            method: "POST",
+                            headers: {
+                                "Content-Type": "application/json"
+                            },
+                            body: JSON.stringify({
+                                name: nameValue,
+                                attendance: attendanceValue,
+                                guest: guestValue
+                            })
+                        })
+                        .then(response => response.json())
+                        .then(result => {
+                            if(result.status === "error") {
+                                alert("មានបញ្ហាកើតឡើង៖ " + result.message);
+                                btn.disabled = false;
+                                btn.innerText = "បញ្ជូន / confirmation"; 
+                                return;
+                            }
+
+                            localStorage.setItem('has_submitted', 'true');
+                            alert("អរគុណសម្រាប់ការបញ្ជាក់ការចូលរួម! Thank you for confirming your participation!");
+                            
+                            if (typeof confetti === "function") {
+                                confetti({
+                                    particleCount: 100,
+                                    spread: 70,
+                                    origin: { y: 0.6 }
+                                });
+                            }
+
+                            form.reset(); 
+                            
+                            btn.disabled = true;
+                            btn.innerText = "បានបញ្ជូនរួច / Sent";
+                        })
+                        .catch(error => {
+                            localStorage.setItem('has_submitted', 'true');
+                            alert("អរគុណសម្រាប់ការបញ្ជាក់ការចូលរួម! Thank you for confirming your participation!");
+                            form.reset();
+                            
+                            btn.disabled = true;
+                            btn.innerText = "បានបញ្ជូនរួច / Sent";
+                        });
+                    });
+                </script>
 
         <script>
                             document.addEventListener("DOMContentLoaded", function() {
