@@ -575,16 +575,18 @@
         }
 
        /* ------------------------------------- */
-        /* ដាក់ប៊ូតុងតន្ត្រីទៅទីតាំងខាងលើខាងឆ្វេង */
+        /* ដាក់ប៊ូតុងតន្ត្រីទៅទីតាំងខាងក្រោមខាងស្ដាំ (Bottom-Right) */
         /* ------------------------------------- */
-        .music-wrapper {
+       .music-wrapper {
             position: fixed;
-            top: 15px;    /* ให้อยู่ด้านบน */
-            left: 15px;   /* ให้อยู่มุมซ้าย */
+            bottom: 95px;   /* 📌 ដំឡើងកម្ពស់ពីបាតក្រោមឱ្យខ្ពស់ជាងមុន ផុតពីប្រអប់ម៉ឺនុយ */
+            right: 20px;    
+            top: auto;      
+            left: auto;     
             z-index: 10000;
             display: flex;
             flex-direction: column; 
-            align-items: flex-start; /* តម្រឹមអក្សរនិងប៊ូតុងទៅខាងឆ្វេងស្អាត */
+            align-items: flex-end; 
         }
         
         .music-text {
@@ -595,36 +597,12 @@
             border-radius: 20px;
             font-size: 11px;
             font-weight: bold;
-            margin-top: 5px; /* ให้อยู่ใต้ปุ่ม หรือปรับระยะตามต้องการ */
+            margin-bottom: 5px; /* ให้อยู่เหนือปุ่ม */
             box-shadow: 0 4px 10px rgba(0,0,0,0.2);
             animation: bounceText 1.5s infinite; 
             white-space: nowrap;
         }
         
-        .music-btn {
-            position: relative !important;
-            top: auto !important;
-            left: auto !important;
-            width: 45px;
-            height: 45px;
-            background: linear-gradient(135deg, #e6c25e, #c59b27); 
-            border: 2px solid #fff;
-            border-radius: 50%;
-            font-size: 20px;
-            color: white;
-            box-shadow: 0 4px 10px rgba(0,0,0,0.3);
-            cursor: pointer;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            outline: none;
-        }
-
-        @keyframes bounceText {
-            0%, 100% { transform: translateY(0); }
-            50% { transform: translateY(-6px); }
-        }
-
         .music-btn {
             width: 45px;
             height: 45px;
@@ -638,6 +616,7 @@
             cursor: pointer;
             box-shadow: 0 4px 12px rgba(0,0,0,0.6), 0 0 10px rgba(235, 211, 155, 0.4);
             transition: 0.3s;
+            outline: none;
         }
 
         .music-btn:active {
@@ -646,6 +625,11 @@
 
         .music-btn.playing {
             animation: spinRecord 3s linear infinite;
+        }
+
+        @keyframes bounceText {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-6px); }
         }
 
         @keyframes spinRecord {
@@ -876,7 +860,7 @@
     <div class="music-wrapper">
         <div id="musicText" class="music-text">ចុចស្ដាប់តន្ត្រី 🎶</div>
         <div id="musicToggle" class="music-btn" onclick="toggleMusic()">
-            🎵
+            🎻
         </div>
     </div>
 
