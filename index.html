@@ -1154,7 +1154,7 @@
                         
                         <textarea id="guestMessage" placeholder="សរសេរពាក្យជូនពរដល់គូស្វាមីភរិយា... write your wishes here.." rows="4" required style="width: 100%; padding: 12px; border-radius: 8px; border: 1px solid #d1b88a; background: rgba(0,0,0,0.4); color: #fff; box-sizing: border-box; resize: none; margin-bottom: 15px;"></textarea>
                         
-                        <button type="submit" class="rsvp-btn">បញ្ជូនពាក្យជូនពរ / Send</button>
+                        <button type="submit" class="rsvp-btn">បញ្ជូន / Send</button>
                     </form>
                 </div>
             </div>
@@ -1380,14 +1380,14 @@
 
                         } else {
                             alert("សូមព្យាយាមម្ដងទៀត។ Please try again.");
-                            submitBtn.innerText = "បញ្ជូន / Send";
+                            submitBtn.innerText = originalBtnText;
                             submitBtn.disabled = false;
                         }
                     })
                     .catch(error => {
                         console.error("Error:", error);
                         alert("មិនអាចតភ្ជាប់ទៅកាន់ប្រព័ន្ធបានទេ! Unable to connect to the system!");
-                        submitBtn.innerText = "បញ្ជូន / Send";
+                        submitBtn.innerText = originalBtnText;
                         submitBtn.disabled = false;
                     });
                 });
