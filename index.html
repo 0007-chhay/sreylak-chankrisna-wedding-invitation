@@ -864,33 +864,32 @@
             text-align: center;
         }
         .cal-btn {
-            display: flex;
+            display: inline-flex;
             flex-direction: column;
             align-items: center;
-            gap: 2px;
-            width: 100%;
-            max-width: 420px;
+            gap: 0;
+            width: auto;
             margin: 0 auto;
             box-sizing: border-box;
-            padding: 14px 18px;
+            padding: 9px 24px;
             background: linear-gradient(135deg, #f3dea6, #b88a44);
             color: #351f0f;
             border: 1px solid #ffe8a8;
-            border-radius: 16px;
+            border-radius: 999px;
             text-decoration: none;
             font-family: 'Battambang', sans-serif;
-            box-shadow: 0 6px 16px rgba(0,0,0,0.45);
+            box-shadow: 0 4px 10px rgba(0,0,0,0.4);
             transition: transform 0.15s ease;
             -webkit-tap-highlight-color: transparent;
         }
         .cal-btn:active { transform: scale(0.97); }
         .cal-btn-main {
-            font-size: 1.05rem;
+            font-size: 0.95rem;
             font-weight: bold;
             line-height: 1.5;
         }
         .cal-btn-en {
-            font-size: 0.9rem;
+            font-size: 0.78rem;
             font-weight: bold;
             letter-spacing: 0.5px;
         }
@@ -915,8 +914,6 @@
         }
         /* នៅក្នុងប្រអប់ Countdown ពណ៌ស */
         .cal-cta.on-light { margin-top: 8px; }
-        .cal-cta.on-light .cal-btn { padding: 12px 10px; }
-        .cal-cta.on-light .cal-btn-sub { font-size: 0.8rem; }
         .cal-cta.on-light .cal-hint { color: #6b4a1f; }
         .cal-cta.on-light .cal-google { color: #800020; }
 
@@ -1138,7 +1135,6 @@
             <a href="wedding.ics" class="cal-btn">
                 <span class="cal-btn-main">📅 រក្សាទុកក្នុងប្រតិទិន</span>
                 <span class="cal-btn-en">Save the date</span>
-                <span class="cal-btn-sub">អាទិត្យ ២២ វិច្ឆិកា ២០២៦ <span style="white-space:nowrap">•&nbsp;5:00&nbsp;PM</span></span>
             </a>
             <p class="cal-hint"></p>
             <a class="cal-google" href="https://calendar.google.com/calendar/render?action=TEMPLATE&amp;text=%E1%9E%96%E1%9E%B7%E1%9E%92%E1%9E%B8%E1%9E%87%E1%9E%94%E1%9F%8B%E1%9E%9B%E1%9F%80%E1%9E%84%E1%9E%98%E1%9E%84%E1%9F%92%E1%9E%82%E1%9E%9B%E1%9E%80%E1%9E%B6%E1%9E%9A%20-%20Van%20Chankrisna%20%26%20Min%20Sreylak&amp;dates=20261122T100000Z%2F20261122T150000Z&amp;details=%E1%9E%96%E1%9E%B7%E1%9E%92%E1%9E%B8%E1%9E%9F%E1%9E%B7%E1%9E%9A%E1%9E%B8%E1%9E%98%E1%9E%84%E1%9F%92%E1%9E%82%E1%9E%9B%E1%9E%A2%E1%9E%B6%E1%9E%96%E1%9E%B6%E1%9E%A0%E1%9F%8D%E1%9E%96%E1%9E%B7%E1%9E%96%E1%9E%B6%E1%9E%A0%E1%9F%8D%E1%9E%9A%E1%9E%94%E1%9E%9F%E1%9F%8B%E1%9E%99%E1%9E%BE%E1%9E%84%E1%9E%81%E1%9F%92%E1%9E%89%E1%9E%BB%E1%9F%86%E1%9F%94%20The%20wedding%20dinner%20reception%20will%20be%20held%20on%20November%2022%2C%202026%2C%20at%205%3A00%20PM.%0A%0A%F0%9F%93%8D%20Google%20Map%3A%20https%3A%2F%2Fmaps.app.goo.gl%2FtrofWD7W4vPz9mzH9&amp;location=Battambang%20City" target="_blank" rel="noopener">ឬបន្ថែមក្នុង Google Calendar</a>
@@ -1325,7 +1321,6 @@
             <a href="wedding.ics" class="cal-btn">
                 <span class="cal-btn-main">📅 រក្សាទុកក្នុងប្រតិទិន</span>
                 <span class="cal-btn-en">Save the date</span>
-                <span class="cal-btn-sub">អាទិត្យ ២២ វិច្ឆិកា ២០២៦ <span style="white-space:nowrap">•&nbsp;5:00&nbsp;PM</span></span>
             </a>
             <p class="cal-hint"></p>
             <a class="cal-google" href="https://calendar.google.com/calendar/render?action=TEMPLATE&amp;text=%E1%9E%96%E1%9E%B7%E1%9E%92%E1%9E%B8%E1%9E%87%E1%9E%94%E1%9F%8B%E1%9E%9B%E1%9F%80%E1%9E%84%E1%9E%98%E1%9E%84%E1%9F%92%E1%9E%82%E1%9E%9B%E1%9E%80%E1%9E%B6%E1%9E%9A%20-%20Van%20Chankrisna%20%26%20Min%20Sreylak&amp;dates=20261122T100000Z%2F20261122T150000Z&amp;details=%E1%9E%96%E1%9E%B7%E1%9E%92%E1%9E%B8%E1%9E%9F%E1%9E%B7%E1%9E%9A%E1%9E%B8%E1%9E%98%E1%9E%84%E1%9F%92%E1%9E%82%E1%9E%9B%E1%9E%A2%E1%9E%B6%E1%9E%96%E1%9E%B6%E1%9E%A0%E1%9F%8D%E1%9E%96%E1%9E%B7%E1%9E%96%E1%9E%B6%E1%9E%A0%E1%9F%8D%E1%9E%9A%E1%9E%94%E1%9E%9F%E1%9F%8B%E1%9E%99%E1%9E%BE%E1%9E%84%E1%9E%81%E1%9F%92%E1%9E%89%E1%9E%BB%E1%9F%86%E1%9F%94%20The%20wedding%20dinner%20reception%20will%20be%20held%20on%20November%2022%2C%202026%2C%20at%205%3A00%20PM.%0A%0A%F0%9F%93%8D%20Google%20Map%3A%20https%3A%2F%2Fmaps.app.goo.gl%2FtrofWD7W4vPz9mzH9&amp;location=Battambang%20City" target="_blank" rel="noopener">ឬបន្ថែមក្នុង Google Calendar</a>
