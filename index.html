@@ -2,7 +2,7 @@
 <html lang="km">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>ចំណងដៃអាពាហ៍ពិពាហ៍ | វ៉ាន ច័ន្ទគ្រឹស្នា & មិន ស្រីលក្ខ</title>
     
 
@@ -12,7 +12,13 @@
     <meta property="og:title" content="ពិធីសិរីមង្គលអាពាហ៍ពិពាហ៍ | វ៉ាន ច័ន្ទគ្រឹស្នា &amp; មិន ស្រីលក្ខ">
 
     <!-- ទាញយកហ្វុនខ្មែរ (បន្ថែម Dancing Script សម្រាប់អក្សរអង់គ្លេសផ្ចង់) -->
-    <link href="https://fonts.googleapis.com/css2?family=Moul&family=Battambang:wght@400;700&family=Dancing+Script:wght@600;700&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <!-- រូបធំខាងលើ ផ្ទុកមុនគេ ដើម្បីបង្ហាញលឿន -->
+    <link rel="preload" as="image" href="first.jpg" fetchpriority="high">
+    <!-- ពុម្ពអក្សរ ផ្ទុកដោយមិនរាំងការបង្ហាញទំព័រ -->
+    <link href="https://fonts.googleapis.com/css2?family=Moul&family=Battambang:wght@400;700&family=Dancing+Script:wght@600;700&display=swap" rel="stylesheet" media="print" onload="this.media='all'">
+    <noscript><link href="https://fonts.googleapis.com/css2?family=Moul&family=Battambang:wght@400;700&family=Dancing+Script:wght@600;700&display=swap" rel="stylesheet"></noscript>
     
     <style>
         :root {
@@ -791,7 +797,7 @@
         }
 
         .animate-text {
-            animation: fadeInUp 1.5s ease-out forwards;
+            animation: fadeInUp 0.7s ease-out forwards;
         }
 
         /* ------------------------------------- */
@@ -991,7 +997,7 @@
     <!-- ប៊ូតុងតន្ត្រីពណ៌មាស -->
     <div class="music-wrapper">
         <div id="musicText" class="music-text">ចុចស្ដាប់តន្ត្រី 🎶</div>
-        <div id="musicToggle" class="music-btn" onclick="toggleMusic()">
+        <div id="musicToggle" class="music-btn" onclick="toggleMusic()" role="button" tabindex="0" aria-label="តន្ត្រី / Music">
             🎻
         </div>
     </div>
@@ -1021,7 +1027,7 @@
                 <h2 class="animate-text">វ៉ាន ច័ន្ទគ្រឹស្នា</h2>
             </div>
             <!-- រូបភាពអក្សរមាសកណ្ដាល (ដាក់នៅទីនេះ ដើម្បីកុំឱ្យធ្លាក់ចុះក្រោម) -->
-            <img src="sl.png" alt="Couple" class="middle-couple-img">
+            <img src="sl.png" alt="ច ល" class="middle-couple-img" width="50" height="38">
 
             <div style="text-align: center;">
                 <p>កូនស្រីនាម</p>
@@ -1271,15 +1277,15 @@
                 Please fill out the information below.</p>
                 
                 <form id="rsvpForm" class="rsvp-form">
-                    <input type="text" name="name" placeholder="បញ្ចូលឈ្មោះរបស់អ្នក... write your name here.." required>
+                    <input type="text" name="name" aria-label="ឈ្មោះ / Name" placeholder="បញ្ចូលឈ្មោះរបស់អ្នក... write your name here.." required>
                     
-                    <select name="attendance" required>
+                    <select name="attendance" required aria-label="ការចូលរួម / Attendance">
                         <option value="" disabled selected>តើអ្នកនឹងចូលរួមដែរឬទេ? / Will you be joining too?</option>
                         <option value="ចូលរួម">បាទ/ចាស ខ្ញុំនឹងចូលរួម / Yes, I will participate.</option>
                         <option value="មិនចូលរួម">សុំទោស ខ្ញុំមិនអាចចូលរួមបានទេ / I'm sorry, I cannot attend.</option>
                     </select>
                     
-                    <select name="guest">
+                    <select name="guest" aria-label="ចំនួនភ្ញៀវ / Guests">
                         <option value="១ នាក់" selected>ចូលរួមម្នាក់ឯង / Participate alone</option>
                         <option value="២ នាក់">ចូលរួម ២ នាក់ / Participate as a pair (2 people)</option>
                         <option value="លក្ខណៈគ្រួសារ">ចូលរួមជាលក្ខណៈគ្រួសារ / Participate as a family</option>
@@ -1313,7 +1319,7 @@
                 <p style="text-align: center; margin-bottom: 20px;">សូមសរសេរពាក្យជូនពរដល់គូស្វាមីភរិយា<br>Please write your wishes to the couple.</p>
                 
                 <form id="wishesForm" class="rsvp-form">
-                    <textarea id="guestMessage" placeholder="សរសេរពាក្យជូនពរដល់គូស្វាមីភរិយា... write your wishes here.." rows="4" required style="width: 100%; padding: 12px; border-radius: 8px; border: 1px solid #d1b88a; background: rgba(0,0,0,0.4); color: #fff; box-sizing: border-box; resize: none; margin-bottom: 15px; font-family: 'Battambang', sans-serif;"></textarea>
+                    <textarea id="guestMessage" aria-label="ពាក្យជូនពរ / Wishes" placeholder="សរសេរពាក្យជូនពរដល់គូស្វាមីភរិយា... write your wishes here.." rows="4" required style="width: 100%; padding: 12px; border-radius: 8px; border: 1px solid #d1b88a; background: rgba(0,0,0,0.4); color: #fff; box-sizing: border-box; resize: none; margin-bottom: 15px; font-family: 'Battambang', sans-serif;"></textarea>
                     
                     <button type="submit" class="rsvp-btn">បញ្ជូន / Send</button>
                 </form>
@@ -1394,11 +1400,11 @@
  
     <!-- របារប៊ូតុងខាងក្រោម (Bottom Navigation) -->
     <div class="bottom-nav">
-        <a href="#schedule" class="nav-item">⏰</a>
-        <a href="#map" class="nav-item">🗺️</a>
-        <a href="#gallery" class="nav-item">📸</a>
-        <a href="#qr" class="nav-item">🎁</a>
-        <a href="#rsvp" class="nav-item">💌</a>
+        <a href="#schedule" class="nav-item" aria-label="កម្មវិធី / Schedule">⏰</a>
+        <a href="#map" class="nav-item" aria-label="ផែនទី / Map">🗺️</a>
+        <a href="#gallery" class="nav-item" aria-label="រូបថត / Gallery">📸</a>
+        <a href="#qr" class="nav-item" aria-label="ចំណងដៃ / Gift">🎁</a>
+        <a href="#rsvp" class="nav-item" aria-label="បញ្ជាក់ការចូលរួម / RSVP">💌</a>
     </div>
 
     <!-- ===================================================== -->
