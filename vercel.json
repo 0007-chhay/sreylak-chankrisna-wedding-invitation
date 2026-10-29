@@ -1,0 +1,9 @@
+{
+  "redirects": [
+    {
+      "source": "/(.*)",
+      "destination": "https://wedding-invitation-gilt-eight.vercel.app/$1",
+      "statusCode": 301
+    }
+  ]
+}
